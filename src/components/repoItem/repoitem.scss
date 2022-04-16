@@ -31,12 +31,12 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    text-align: center;
     height: 15%;
 
     &-count {
       font-size: 1.1rem;
       &-label {
+        margin-bottom: 1rem;
         font-size: 0.8rem;
         color: #acacac;
       }
