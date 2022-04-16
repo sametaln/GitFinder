@@ -41,7 +41,7 @@ const User = (user: any) => {
       </div>
       <Repos repos={repos} />
       <button className="user-load" onClick={handleClick}>
-        Load More
+        LOAD MORE
       </button>
     </div>
   );
