@@ -38,10 +38,13 @@ const User = (user: any) => {
             />
           </div>
           <div className="user-info-container">
-            {user.user.name ? (
-              <h1 className="user-info-name">{user.user.name}</h1>
-            ) : null}
-            <h2 className="user-info-login">@{user.user.login}</h2>
+            <div className="user-info-names">
+              {user.user.name ? (
+                <h1 className="user-info-name">{user.user.name}</h1>
+              ) : null}
+              <h2 className="user-info-login">@{user.user.login}</h2>
+            </div>
+
             <div className="user-info-stats">
               <div className="user-stats-repos">
                 <p id="length">{repos?.length}</p>

@@ -1,5 +1,6 @@
 import Home from './pages/Home/Home';
 import Loading from './pages/Loading/Loading';
+import PrivateRoute from './components/privateRoute/PrivateRoute';
 import User from './pages/User/User';
 import { useState, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -11,18 +12,6 @@ function App() {
   const username = useRef<HTMLInputElement | null>(null);
 
   return (
-    // <>
-    //   {first && (
-    //     <Home
-    //       username={username}
-    //       setUser={setUser}
-    //       setLoading={setLoading}
-    //       setFirst={setFirst}
-    //     />
-    //   )}
-    //   {loading && <Loading />}
-    //   {user && <User user={user} setUser={setUser} setFirst={setFirst} />}
-    // </>
     <Router>
       <Routes>
         <Route
@@ -36,7 +25,14 @@ function App() {
             />
           }
         />
-        <Route path="/user" element={<User user={user} />} />
+        <Route
+          path="/user"
+          element={
+            <PrivateRoute user={user}>
+              <User user={user} />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </Router>
   );
