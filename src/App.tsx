@@ -1,7 +1,7 @@
 import Home from './pages/Home/Home';
 import Loading from './pages/Loading/Loading';
 import User from './pages/User/User';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 
 function App() {
   const [user, setUser] = useState<Object | null>(null);
@@ -21,6 +21,7 @@ function App() {
       )}
       {loading && <Loading />}
       {user && <User user={user} />}
+      {/* <User /> */}
     </>
   );
 }

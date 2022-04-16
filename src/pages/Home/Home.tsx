@@ -15,9 +15,15 @@ const Home = ({
     e.preventDefault();
     setLoading(true);
     setFirst(false);
-    const res = await fetch(`https://jsonplaceholder.typicode.com/users`);
-    const data = await res.json();
-    setUser(data[2]);
+    try {
+      const res = await fetch(
+        `https://api.github.com/users/${username.current.value.split('@')[1]}`
+      );
+      const data = await res.json();
+      setUser(data);
+    } catch (error) {
+      console.log(error);
+    }
     setLoading(false);
   };
 
@@ -29,6 +35,7 @@ const Home = ({
         <form className="home-form" onSubmit={submitHandler}>
           <input
             type="search"
+            defaultValue="@"
             className="home-input"
             placeholder="Type username"
             ref={username}
@@ -40,8 +47,3 @@ const Home = ({
 };
 
 export default Home;
-
-/// STYLE USER PAGE
-/// LEARN SKELETON PACKAGE
-/// LEARN TYPESCRIPT MORE
-/// lEARN GITHUB API
