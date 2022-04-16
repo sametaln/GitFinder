@@ -1,0 +1,60 @@
+.user-repo-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  height: 100%;
+  margin: 1rem 0;
+  background-color: #0a0a0a;
+  border: 1px solid #292929;
+  border-radius: 4px;
+  padding: 0 1rem;
+  transition: background-color 0.1s ease-in-out;
+
+  &-left {
+    text-align: left;
+  }
+
+  &-name {
+    font-size: 0.8rem;
+    line-height: 18px;
+  }
+
+  &-description {
+    font-size: 0.8rem;
+    color: #acacac;
+  }
+
+  &-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 15%;
+
+    &-count {
+      font-size: 1.1rem;
+      &-label {
+        font-size: 0.8rem;
+        color: #acacac;
+      }
+    }
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #fff;
+    color: black;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .user-repo-item {
+    width: 80%;
+    height: 25%;
+    margin: 1rem 0;
+  }
+}

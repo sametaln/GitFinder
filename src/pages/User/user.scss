@@ -1,0 +1,134 @@
+.user-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.user {
+  width: 40%;
+  height: 90vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+
+  &-info {
+    background-color: #0a0a0a;
+    border: 1px solid #292929;
+    width: 80%;
+    height: 35%;
+    border-radius: 4px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 15%;
+
+    &-img {
+      position: absolute;
+      width: 100%;
+      height: 35%;
+      top: -10%;
+    }
+
+    &-avatar {
+      width: 5.5rem;
+      height: 5.5rem;
+      object-fit: cover;
+      border-radius: 50%;
+      vertical-align: middle;
+    }
+
+    &-container {
+      width: 90%;
+      height: 75%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    &-stats {
+      margin-top: 2rem;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    &-name {
+      margin-top: 3rem;
+      font-size: 1.2rem;
+    }
+
+    &-login {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.repo-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 55%;
+
+  &-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .user {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .user {
+    width: 100%;
+
+    &-info {
+      height: 30%;
+
+      &-img {
+        top: -18%;
+      }
+
+      &-avatar {
+        width: 5rem;
+        height: 5rem;
+      }
+
+      &-container {
+        height: 70%;
+        width: 100%;
+        font-size: 0.9rem;
+      }
+
+      &-name {
+        margin-top: 2rem;
+      }
+    }
+    &-login {
+      margin-top: 1rem;
+    }
+  }
+}
