@@ -1,16 +1,21 @@
 import './user.scss';
 import { useEffect, useState } from 'react';
 import Repos from '../../components/Repos/Repos';
+import { Link } from 'react-router-dom';
 
 const User = (user: any) => {
   const [repos, setRepos] = useState<any[]>([]);
   const [count, setCount] = useState(2);
   useEffect(() => {
-    fetch(`https://api.github.com/users/${user.user.login}/repos`)
-      .then((res) => res.json())
-      .then((data) => {
-        setRepos(data);
-      });
+    try {
+      fetch(`https://api.github.com/users/${user.user.login}/repos`)
+        .then((res) => res.json())
+        .then((data) => {
+          setRepos(data);
+        });
+    } catch (e) {
+      console.error('patladi');
+    }
   }, [user.user.login]);
 
   const handleClick = () => {
@@ -64,9 +69,14 @@ const User = (user: any) => {
         <div className="repo-container">
           <h1 className="repo-container-title">Repositories</h1>
           <Repos repos={repos.slice(0, count)} />
-          <button className="user-load" onClick={handleClick}>
-            LOAD MORE
-          </button>
+          <div className="repo-container-buttons">
+            <button className="user-load" onClick={handleClick}>
+              Load More
+            </button>
+            <Link className="user-load" to="/">
+              Go Back
+            </Link>
+          </div>
         </div>
       </div>
     </div>

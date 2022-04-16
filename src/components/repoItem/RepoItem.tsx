@@ -2,7 +2,12 @@ import './repoitem.scss';
 
 const RepoItem = ({ repo }: { repo: any }) => {
   return (
-    <div className="user-repo-item">
+    <a
+      href={repo.html_url}
+      target="_blank"
+      rel="noreferrer"
+      className="user-repo-item"
+    >
       <div className="user-repo-item-left">
         <h2 className="user-repo-item-name">{repo.name}</h2>
         <p className="user-repo-item-description">
@@ -19,7 +24,7 @@ const RepoItem = ({ repo }: { repo: any }) => {
           </label>
         </div>
       </div>
-    </div>
+    </a>
   );
 };
 

@@ -1,4 +1,5 @@
 import './home.scss';
+import { useNavigate } from 'react-router-dom';
 
 const Home = ({
   username,
@@ -11,18 +12,20 @@ const Home = ({
   setLoading: any;
   setFirst: any;
 }) => {
+  const navigate = useNavigate();
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setFirst(false);
     try {
       const res = await fetch(
-        `https://api.github.com/users/${username.current.value.split('@')[1]}`
+        `https://api.github.com/users/${username.current.value}`
       );
       const data = await res.json();
       setUser(data);
+      navigate('../user', { replace: true });
     } catch (error) {
-      console.log(error);
+      console.log('patladi');
     }
     setLoading(false);
   };
@@ -35,11 +38,11 @@ const Home = ({
         <form className="home-form" onSubmit={submitHandler}>
           <input
             type="search"
-            defaultValue="@"
             className="home-input"
             placeholder="Type username"
             ref={username}
           />
+          <button className="home-form-button">Search</button>
         </form>
       </div>
     </div>

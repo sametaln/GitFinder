@@ -40,7 +40,7 @@
       position: absolute;
       width: 100%;
       height: 35%;
-      top: -10%;
+      top: -20%;
     }
 
     &-avatar {
@@ -61,7 +61,7 @@
     }
 
     &-stats {
-      margin-top: 2rem;
+      margin-top: 1rem;
       width: 100%;
       display: flex;
       flex-direction: row;
@@ -70,13 +70,41 @@
     }
 
     &-name {
-      margin-top: 3rem;
+      margin-top: 1.2rem;
       font-size: 1.2rem;
     }
 
     &-login {
-      margin-top: 2rem;
+      margin-top: 1rem;
       font-size: 0.9rem;
+    }
+  }
+
+  &-load {
+    background-color: transparent;
+    border: 1px solid #292929;
+    color: #fff;
+    width: 25%;
+    height: 3rem;
+    margin: 2rem 0;
+    transition: all 0.1s linear;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: none;
+
+    &:active {
+      transform: translateY(5px);
+    }
+
+    &:hover {
+      background-color: #fff;
+      color: black;
     }
   }
 }
@@ -92,6 +120,14 @@
 
   &-title {
     font-size: 1.2rem;
+  }
+
+  &-buttons {
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
