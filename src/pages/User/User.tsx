@@ -26,10 +26,26 @@ const User = (user: any) => {
     setCount(count + 2);
   };
 
+  repos.sort(
+    (a: { stargazers_count: number }, b: { stargazers_count: number }) => {
+      if (a.stargazers_count > b.stargazers_count) return -1;
+      if (a.stargazers_count < b.stargazers_count) return 1;
+      return 0;
+    }
+  );
+
   return (
     <div className="user-wrapper">
       <div className="user">
         <div className="user-info">
+          <a
+            href={user.user.html_url}
+            target="_blank"
+            rel="noreferrer"
+            className="user-info-link"
+          >
+            View on Github
+          </a>
           <div className="user-info-img">
             <img
               className="user-info-avatar"
