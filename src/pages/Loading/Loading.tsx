@@ -1,6 +1,6 @@
 import './loading.scss';
 
-const Loading = ({ error }: { error: any }) => {
+const Loading = () => {
   return (
     <div className="load-info-container">
       <div className="load-info-wrapper">
@@ -19,11 +19,6 @@ const Loading = ({ error }: { error: any }) => {
           <div className="load-repo-description"></div>
         </div>
       </div>
-      {error ? (
-        <div className="load-error">
-          <p>{error}</p>
-        </div>
-      ) : null}
     </div>
   );
 };

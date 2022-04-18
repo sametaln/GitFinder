@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 import Loading from '../Loading/Loading';
 import UserInfo from '../../components/userInfo/UserInfo';
 
-const User = (user: any) => {
+const User = (user: any, setError: any) => {
   const userObject = user.user;
   const [repos, setRepos] = useState<any[]>([]);
   const [count, setCount] = useState(2);
-  const [error, setError] = useState('');
+  const [warning, setWarning] = useState('');
 
   useEffect(() => {
     try {
@@ -18,17 +18,15 @@ const User = (user: any) => {
         .then((data) => {
           setRepos(data);
         });
-      if (userObject.message) {
-        setError('User not found.');
-      }
     } catch (e) {
-      console.error('patladi');
+      console.error(e);
     }
   }, [userObject.login]);
 
   const handleClick = () => {
     if (count > repos.length) {
       setCount(repos.length + 1);
+      setWarning('You have load all repositories');
       return;
     }
     setCount(count + 2);
@@ -42,17 +40,20 @@ const User = (user: any) => {
     }
   );
 
-  return userObject.message ? (
-    <Loading error={error} />
-  ) : (
+  return (
     <div className="user-wrapper">
+      {warning && count == repos.length + 1 ? (
+        <div className="user-warning">
+          <p>{warning}</p>
+        </div>
+      ) : null}
       <div className="user">
         <UserInfo userObject={userObject} repos={repos} />
         <div className="repo-container">
           <h1 className="repo-container-title">Repositories</h1>
           <Repos repos={repos.slice(0, count)} />
           <div className="repo-container-buttons">
-            <button className="user-load" onClick={handleClick}>
+            <button className="user-load more" onClick={handleClick}>
               Load More
             </button>
             <Link className="user-load" to="/">

@@ -7,7 +7,10 @@ const UserInfo = ({ userObject, repos }: { userObject: any; repos: any }) => {
         rel="noreferrer"
         className="user-info-link"
       >
-        View on Github
+        <p className="user-info-link-text">
+          View on Github{' '}
+          <img className="user-info-link-icon" src="assets/icon.svg" />
+        </p>
       </a>
       <div className="user-info-img">
         <img

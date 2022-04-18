@@ -22,6 +22,20 @@
   text-align: center;
   position: relative;
 
+  &-warning {
+    color: white;
+    position: absolute;
+    bottom: 3%;
+    right: 2%;
+    background-color: #b68d1d;
+    width: 20%;
+    height: 7%;
+    border-radius: 4px;
+    border: 1px solid #a09f5a;
+    padding: 0 1rem;
+    font-size: 0.9rem;
+  }
+
   &-info {
     background-color: #0a0a0a;
     border: 1px solid #292929;
@@ -45,14 +59,20 @@
       color: #fff;
       z-index: 2;
       transition: all 0.4s linear;
+      display: flex;
+      justify-content: space-between;
 
-      &:hover {
+      &-text {
+        margin-right: 1rem;
+      }
+
+      &-text:hover {
         &::after {
           width: 100%;
         }
       }
 
-      &::after {
+      &-text::after {
         content: '';
         display: block;
         width: 0;
@@ -60,6 +80,12 @@
         height: 1px;
         background: #fff;
         transition: width 0.15s ease-in;
+      }
+
+      &-icon {
+        position: absolute;
+        top: 25%;
+        right: -0.5rem;
       }
     }
 
@@ -137,6 +163,15 @@
   }
 }
 
+.more {
+  background-color: #0da090;
+  border: 1px solid #72f2e4;
+
+  &:hover {
+    border: 1px solid #292929;
+  }
+}
+
 .repo-container {
   width: 100%;
   display: flex;
@@ -165,7 +200,7 @@
 
     &-info {
       &-img {
-        top: -10%;
+        top: -13%;
       }
     }
   }
@@ -185,7 +220,7 @@
       }
 
       &-img {
-        top: -15%;
+        top: -12%;
       }
 
       &-avatar {
@@ -210,7 +245,7 @@
     }
 
     &-load {
-      font-size: 0.6rem;
+      font-size: 0.75rem;
     }
   }
 

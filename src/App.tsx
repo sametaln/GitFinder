@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App() {
   const [user, setUser] = useState<Object | null>(null);
   const [loading, setLoading] = useState<Boolean>(false);
-  const [first, setFirst] = useState<Boolean>(true);
   const username = useRef<HTMLInputElement | null>(null);
 
   return (
