@@ -26,6 +26,8 @@
   &-description {
     font-size: 0.8rem;
     color: #acacac;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   &-stats {

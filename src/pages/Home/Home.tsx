@@ -1,36 +1,35 @@
 import './home.scss';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../../pages/Loading/Loading';
 
 const Home = ({
   username,
   setUser,
   setLoading,
-  setFirst,
+  loading,
 }: {
   username: any;
   setUser: any;
   setLoading: any;
-  setFirst: any;
+  loading: any;
 }) => {
   const navigate = useNavigate();
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    setFirst(false);
-    try {
-      const res = await fetch(
-        `https://api.github.com/users/${username.current.value}`
-      );
-      const data = await res.json();
-      setUser(data);
-      setLoading(false);
-      navigate('../user', { replace: true });
-    } catch (error) {
-      console.log('patladi');
-    }
+    const res = await fetch(
+      `https://api.github.com/users/${username.current.value}`
+    );
+    const data = await res.json();
+    setUser(data);
+    console.log(data);
+    setLoading(false);
+    navigate('../user', { replace: true });
   };
 
-  return (
+  return loading ? (
+    <Loading error={null} />
+  ) : (
     <div className="home">
       <div className="home-container">
         <img className="home-logo" src="assets/logo.svg" alt="Hipo Logo" />

@@ -4,7 +4,6 @@
   background-color: black;
   color: white;
   display: flex;
-  align-items: center;
   justify-content: center;
   box-sizing: border-box;
   overflow-y: auto;
@@ -13,7 +12,7 @@
 
 .user {
   width: 40%;
-  height: 90vh;
+  height: 85vh;
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
@@ -182,10 +181,11 @@
       &-link {
         right: 0.3rem;
         font-size: 0.6rem;
+        right: 1rem;
       }
 
       &-img {
-        top: -20%;
+        top: -15%;
       }
 
       &-avatar {

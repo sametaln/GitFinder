@@ -2,21 +2,29 @@ import './user.scss';
 import { useEffect, useState } from 'react';
 import Repos from '../../components/Repos/Repos';
 import { Link } from 'react-router-dom';
+import Loading from '../Loading/Loading';
+import UserInfo from '../../components/userInfo/UserInfo';
 
 const User = (user: any) => {
+  const userObject = user.user;
   const [repos, setRepos] = useState<any[]>([]);
   const [count, setCount] = useState(2);
+  const [error, setError] = useState('');
+
   useEffect(() => {
     try {
-      fetch(`https://api.github.com/users/${user.user.login}/repos`)
+      fetch(`https://api.github.com/users/${userObject.login}/repos`)
         .then((res) => res.json())
         .then((data) => {
           setRepos(data);
         });
+      if (userObject.message) {
+        setError('User not found.');
+      }
     } catch (e) {
       console.error('patladi');
     }
-  }, [user.user.login]);
+  }, [userObject.login]);
 
   const handleClick = () => {
     if (count > repos.length) {
@@ -34,57 +42,12 @@ const User = (user: any) => {
     }
   );
 
-  return (
+  return userObject.message ? (
+    <Loading error={error} />
+  ) : (
     <div className="user-wrapper">
       <div className="user">
-        <div className="user-info">
-          <a
-            href={user.user.html_url}
-            target="_blank"
-            rel="noreferrer"
-            className="user-info-link"
-          >
-            View on Github
-          </a>
-          <div className="user-info-img">
-            <img
-              className="user-info-avatar"
-              src={user.user.avatar_url}
-              alt="User avatar"
-            />
-          </div>
-          <div className="user-info-container">
-            <div className="user-info-names">
-              {user.user.name ? (
-                <h1 className="user-info-name">{user.user.name}</h1>
-              ) : null}
-              <h2 className="user-info-login">@{user.user.login}</h2>
-            </div>
-
-            <div className="user-info-stats">
-              <div className="user-stats-repos">
-                <p id="length">{repos?.length}</p>
-                <label htmlFor="length">Repositories</label>
-              </div>
-              <div className="user-stats-following">
-                <p id="following">
-                  {user.user.following < 1000
-                    ? user.user.following
-                    : `${(user.user.following / 1000).toFixed(1)}k`}
-                </p>
-                <label htmlFor="following">Following</label>
-              </div>
-              <div className="user-stats-follower">
-                <p id="followers">
-                  {user.user.followers < 1000
-                    ? user.user.followers
-                    : `${(user.user.followers / 1000).toFixed(1)}k`}
-                </p>
-                <label htmlFor="followers">Followers</label>
-              </div>
-            </div>
-          </div>
-        </div>
+        <UserInfo userObject={userObject} repos={repos} />
         <div className="repo-container">
           <h1 className="repo-container-title">Repositories</h1>
           <Repos repos={repos.slice(0, count)} />

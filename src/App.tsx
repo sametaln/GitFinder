@@ -1,5 +1,4 @@
 import Home from './pages/Home/Home';
-import Loading from './pages/Loading/Loading';
 import PrivateRoute from './components/privateRoute/PrivateRoute';
 import User from './pages/User/User';
 import { useState, useRef } from 'react';
@@ -21,7 +20,7 @@ function App() {
               username={username}
               setUser={setUser}
               setLoading={setLoading}
-              setFirst={setFirst}
+              loading={loading}
             />
           }
         />

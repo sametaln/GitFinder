@@ -1,0 +1,147 @@
+.load-info {
+  &-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &-wrapper {
+    width: 35%;
+    height: 35%;
+    background-color: #0a0a0a;
+    border: 1px solid rgba(41, 41, 41, 1);
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-img {
+    width: 6rem;
+    height: 6rem;
+    background-color: #222222;
+    border-radius: 50%;
+    position: absolute;
+    top: -17%;
+  }
+
+  &-name {
+    background-color: #222222;
+    position: absolute;
+    top: 27%;
+    width: 27%;
+    height: 1rem;
+  }
+
+  &-login {
+    background-color: #222222;
+    position: absolute;
+    top: 36%;
+    width: 16%;
+    height: 0.65rem;
+  }
+}
+
+.load-repo {
+  &-container {
+    width: 35%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    margin-top: 4.5rem;
+  }
+  &-wrapper {
+    width: 100%;
+    height: 40%;
+    background-color: #0a0a0a;
+    border: 1px solid rgba(41, 41, 41, 1);
+    border-radius: 4px;
+    position: relative;
+    padding: 1rem;
+    top: -17%;
+  }
+
+  &-header {
+    width: 35%;
+    height: 1rem;
+    background-color: #222222;
+    border-radius: 4px;
+    position: absolute;
+    top: -27%;
+  }
+
+  &-title {
+    background-color: #222222;
+    position: absolute;
+    top: 27%;
+    width: 27%;
+    height: 0.9rem;
+  }
+  &-description {
+    background-color: #222222;
+    position: absolute;
+    top: 60%;
+    width: 80%;
+    height: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .load-info {
+    &-wrapper {
+      width: 80%;
+    }
+  }
+
+  .load-repo {
+    &-container {
+      width: 80%;
+    }
+
+    &-header {
+      top: -30%;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .load-info {
+    &-wrapper {
+      width: 80%;
+    }
+  }
+
+  .load-repo {
+    &-container {
+      width: 80%;
+    }
+
+    &-header {
+      top: -30%;
+    }
+  }
+}
+
+.load-error {
+  color: white;
+  position: absolute;
+  bottom: 3%;
+  right: 2%;
+  background-color: #842323;
+  width: 20%;
+  height: 7%;
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid #cb7474;
+}
