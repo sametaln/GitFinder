@@ -23,11 +23,11 @@ const Home = ({
       );
       const data = await res.json();
       setUser(data);
+      setLoading(false);
       navigate('../user', { replace: true });
     } catch (error) {
       console.log('patladi');
     }
-    setLoading(false);
   };
 
   return (
