@@ -154,6 +154,7 @@
     font-family: inherit;
     text-decoration: none;
     font-size: 0.9rem;
+    z-index: 1;
 
     &:active {
       transform: translateY(5px);
@@ -169,7 +170,7 @@
 .more {
   background-color: #0da090;
   border: 1px solid #72f2e4;
-
+  z-index: 1;
   &:hover {
     border: 1px solid #292929;
   }
@@ -178,7 +179,7 @@
 .less {
   background-color: #a00d19;
   border: 1px solid #a33f3f;
-
+  z-index: 1;
   &:hover {
     border: 1px solid #292929;
   }

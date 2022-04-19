@@ -1,13 +1,12 @@
 import Home from './pages/Home/Home';
 import PrivateRoute from './components/privateRoute/PrivateRoute';
 import User from './pages/User/User';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   const [user, setUser] = useState<Object | null>(null);
   const [loading, setLoading] = useState<Boolean>(false);
-  const username = useRef<HTMLInputElement | null>(null);
 
   return (
     <Router>
@@ -15,12 +14,7 @@ function App() {
         <Route
           path="/"
           element={
-            <Home
-              username={username}
-              setUser={setUser}
-              setLoading={setLoading}
-              loading={loading}
-            />
+            <Home setUser={setUser} setLoading={setLoading} loading={loading} />
           }
         />
         <Route

@@ -2,8 +2,9 @@ import './user.scss';
 import { useEffect, useState } from 'react';
 import Repos from '../../components/Repos/Repos';
 import { Link } from 'react-router-dom';
-import Loading from '../Loading/Loading';
+import RepoLoad from '../../components/repoLoad/RepoLoad';
 import UserInfo from '../../components/userInfo/UserInfo';
+import axios from 'axios';
 
 const User = (user: any, setError: any) => {
   const userObject = user.user;
@@ -11,18 +12,25 @@ const User = (user: any, setError: any) => {
   const [count, setCount] = useState(2);
   const [warning, setWarning] = useState('');
   const [more, setMore] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     try {
-      fetch(`https://api.github.com/users/${userObject.login}/repos`)
-        .then((res) => res.json())
-        .then((data) => {
-          setRepos(data);
-        });
+      const fetchRepos = async (username: string) => {
+        const res = await axios.get(
+          `https://api.github.com/users/${username}/repos`
+        );
+        return await res.data;
+      };
+      setLoading(true);
+      fetchRepos(userObject.login).then((data: any) => {
+        setRepos(data);
+        setLoading(false);
+      });
     } catch (e) {
       console.error(e);
     }
-  }, [userObject.login]);
+  }, []);
 
   const handleClickMore = () => {
     if (count === repos.length) {
@@ -35,7 +43,6 @@ const User = (user: any, setError: any) => {
   };
 
   const handleClickLess = () => {
-    console.log(count);
     if (count === 3) {
       setWarning('');
       setMore(true);
@@ -64,7 +71,7 @@ const User = (user: any, setError: any) => {
         <UserInfo userObject={userObject} repos={repos} />
         <div className="repo-container">
           <h1 className="repo-container-title">Repositories</h1>
-          <Repos repos={repos.slice(0, count)} />
+          {loading ? <RepoLoad /> : <Repos repos={repos.slice(0, count)} />}
           <div className="repo-container-buttons">
             {more ? (
               <button className="user-load more" onClick={handleClickMore}>
