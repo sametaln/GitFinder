@@ -34,6 +34,10 @@
     border: 1px solid #a09f5a;
     padding: 0 1rem;
     font-size: 0.9rem;
+    transition: opacity 1s linear 1s;
+    &:hover {
+      opacity: 0;
+    }
   }
 
   &-info {
@@ -145,7 +149,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: transparent;
     color: white;
     cursor: pointer;
     font-family: inherit;
@@ -166,6 +169,15 @@
 .more {
   background-color: #0da090;
   border: 1px solid #72f2e4;
+
+  &:hover {
+    border: 1px solid #292929;
+  }
+}
+
+.less {
+  background-color: #a00d19;
+  border: 1px solid #a33f3f;
 
   &:hover {
     border: 1px solid #292929;
@@ -194,7 +206,7 @@
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 750px) {
   .user {
     width: 100%;
 
@@ -206,7 +218,7 @@
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 500px) {
   .user {
     width: 100%;
 
@@ -215,8 +227,14 @@
 
       &-link {
         right: 0.3rem;
-        font-size: 0.6rem;
+        font-size: 0.5rem;
         right: 1rem;
+
+        &-icon {
+          position: absolute;
+          top: 20%;
+          right: -0.5rem;
+        }
       }
 
       &-img {
@@ -247,6 +265,18 @@
     &-load {
       font-size: 0.75rem;
     }
+
+    .user-warning {
+      position: absolute;
+      background-color: #fff;
+    }
+  }
+
+  .user-warning {
+    width: 30%;
+    right: 35%;
+    bottom: 5%;
+    font-size: 0.55rem;
   }
 
   .repo-container {
