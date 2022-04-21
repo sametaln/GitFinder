@@ -33,32 +33,32 @@ const UserPage = ({ user }: { user: User }) => {
         setRepos(data);
         setLoading(false);
       });
-    } catch (e) {
+    } catch (err) {
       setError('Something wrong happened. Please try again.');
-      navigate('/', { replace: true });
+      navigate('/');
     }
   }, []);
 
   useEffect(() => {
-    if (count === repos.length) {
+    if (count <= 2) {
+      setCount(2);
+      setMore(true);
+    }
+    if (count >= repos.length && repos.length != 0) {
+      setCount(repos.length);
       setMore(false);
-      setWarning('You have load all repositories');
-      setCount(repos.length + 1);
     }
   }, [count]);
 
   const handleClickMore = () => {
-    repos.length % 2 === 0 ? setCount(count + 2) : setCount(count + 1);
+    if (count >= repos.length) {
+      setWarning('No more repos to show.');
+    }
+    setCount(count + 2);
   };
 
   const handleClickLess = () => {
-    if (count === 3) {
-      setMore(true);
-      setWarning('');
-      setCount(2);
-      return;
-    }
-    repos.length % 2 === 0 ? setCount(count - 2) : setCount(count - 1);
+    setCount(count - 2);
   };
 
   repos.sort(
