@@ -4,11 +4,21 @@ import Repos from '../../components/Repos/Repos';
 import { Link } from 'react-router-dom';
 import RepoLoad from '../../components/repoLoad/RepoLoad';
 import UserInfo from '../../components/userInfo/UserInfo';
-import axios from 'axios';
+import { fetchRepos } from '../../utils/fetch.utils';
+import { User } from '../../App';
 
-const User = (user: any, setError: any) => {
-  const userObject = user.user;
-  const [repos, setRepos] = useState<any[]>([]);
+export type Repo = {
+  id: string;
+  name: string;
+  description: string;
+  login: string;
+  stargazers_count: number;
+  html_url: string;
+};
+
+const UserPage = ({ user }: { user: User }) => {
+  const userObject = user;
+  const [repos, setRepos] = useState<Repo[]>([]);
   const [count, setCount] = useState(2);
   const [warning, setWarning] = useState('');
   const [more, setMore] = useState(true);
@@ -16,14 +26,8 @@ const User = (user: any, setError: any) => {
 
   useEffect(() => {
     try {
-      const fetchRepos = async (username: string) => {
-        const res = await axios.get(
-          `https://api.github.com/users/${username}/repos`
-        );
-        return await res.data;
-      };
       setLoading(true);
-      fetchRepos(userObject.login).then((data: any) => {
+      fetchRepos<Array<Repo>>(userObject.login).then((data: Repo[]) => {
         setRepos(data);
         setLoading(false);
       });
@@ -73,14 +77,18 @@ const User = (user: any, setError: any) => {
           <h1 className="repo-container-title">Repositories</h1>
           {loading ? <RepoLoad /> : <Repos repos={repos.slice(0, count)} />}
           <div className="repo-container-buttons">
-            {more ? (
+            {more && repos.length ? (
               <button className="user-load more" onClick={handleClickMore}>
                 Load More
               </button>
             ) : (
-              <button className="user-load less" onClick={handleClickLess}>
-                Show Less
-              </button>
+              <>
+                {repos.length ? (
+                  <button className="user-load less" onClick={handleClickLess}>
+                    Show Less
+                  </button>
+                ) : null}
+              </>
             )}
             <Link className="user-load" to="/">
               Go Back
@@ -92,4 +100,4 @@ const User = (user: any, setError: any) => {
   );
 };
 
-export default User;
+export default UserPage;

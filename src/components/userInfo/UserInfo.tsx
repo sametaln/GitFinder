@@ -1,4 +1,13 @@
-const UserInfo = ({ userObject, repos }: { userObject: any; repos: any }) => {
+import { User } from '../../App';
+import { Repo } from '../../pages/UserPage/UserPage';
+
+const UserInfo = ({
+  userObject,
+  repos,
+}: {
+  userObject: User;
+  repos: Repo[];
+}) => {
   return (
     <div className="user-info">
       <a

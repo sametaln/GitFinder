@@ -1,12 +1,21 @@
 import Home from './pages/Home/Home';
 import PrivateRoute from './components/privateRoute/PrivateRoute';
-import User from './pages/User/User';
+import UserPage from './pages/UserPage/UserPage';
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+export type User = {
+  login: string;
+  name: string;
+  avatar_url: string;
+  html_url: string;
+  followers: number;
+  following: number;
+};
+
 function App() {
-  const [user, setUser] = useState<Object | null>(null);
-  const [loading, setLoading] = useState<Boolean>(false);
+  const [user, setUser] = useState<User>();
+  const [loading, setLoading] = useState(false);
 
   return (
     <Router>
@@ -20,8 +29,8 @@ function App() {
         <Route
           path="/user"
           element={
-            <PrivateRoute user={user}>
-              <User user={user} />
+            <PrivateRoute user={user as User}>
+              <UserPage user={user as User} />
             </PrivateRoute>
           }
         />

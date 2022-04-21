@@ -2,50 +2,27 @@ import './home.scss';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../../pages/Loading/Loading';
 import { useState } from 'react';
-import axios from 'axios';
+import { fetchUserData } from '../../utils/fetch.utils';
 
 const Home = ({
   setUser,
   setLoading,
   loading,
 }: {
-  setUser: any;
-  setLoading: any;
-  loading: any;
+  setUser: Function;
+  setLoading: Function;
+  loading: boolean;
 }) => {
-  const [username, setUserName] = useState<any>('');
-  const [error, setError] = useState<String>('');
-  const [cache, setCache] = useState<Object>({});
-  const [cacheTimer, setCacheTimer] = useState<number>(0);
+  const [username, setUserName] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
-
-  const cacheTime: number = 300000;
-
-  const getCacheTimer = (time: number) => {
-    const now = new Date().getTime();
-    if (cacheTimer < now + time) {
-      setCacheTimer(now + time);
-    }
-    return cacheTimer;
-  };
-
-  const fetchUserData = async (username: string) => {
-    const res = await axios.get(`https://api.github.com/users/${username}`);
-    const data = await res.data;
-    return data;
-  };
 
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     try {
       const data = await fetchUserData(username);
-      setCache({
-        username: data,
-        time: getCacheTimer(cacheTime),
-      });
       setUser(data);
-      console.log(cache);
       setLoading(false);
       setError('');
       navigate('../user', { replace: true });

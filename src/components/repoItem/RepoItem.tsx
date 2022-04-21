@@ -1,7 +1,7 @@
 import './repoitem.scss';
-import { useState } from 'react';
+import { Repo } from '../../pages/UserPage/UserPage';
 
-const RepoItem = ({ repo }: { repo: any }) => {
+const RepoItem = ({ repo }: { repo: Repo }) => {
   return (
     <>
       <div className="user-repo-item">
