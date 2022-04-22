@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 export type User = {
+  fetch_url: string;
   login: string;
   name: string;
   avatar_url: string;

@@ -4,7 +4,7 @@ import Repos from '../../components/Repos/Repos';
 import { Link, useNavigate } from 'react-router-dom';
 import RepoLoad from '../../components/repoLoad/RepoLoad';
 import UserInfo from '../../components/userInfo/UserInfo';
-import { fetchRepos } from '../../utils/fetch.utils';
+import { fetchRepos, getWithTime } from '../../utils/fetch.utils';
 import { User } from '../../App';
 
 export type Repo = {

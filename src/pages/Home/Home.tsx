@@ -2,8 +2,7 @@ import './home.scss';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../../pages/Loading/Loading';
 import { useState } from 'react';
-import { fetchUserData } from '../../utils/fetch.utils';
-
+import { fetchUserData, getWithTime } from '../../utils/fetch.utils';
 const Home = ({
   setUser,
   setLoading,
@@ -21,11 +20,18 @@ const Home = ({
     e.preventDefault();
     setLoading(true);
     try {
-      const data = await fetchUserData(username);
-      setUser(data);
-      setLoading(false);
-      setError('');
-      navigate('../user', { replace: true });
+      if (!getWithTime(username)) {
+        const data = await fetchUserData(username);
+        setUser(data);
+        setLoading(false);
+        setError('');
+        navigate('../user', { replace: true });
+      } else {
+        setUser(getWithTime(username));
+        setLoading(false);
+        setError('');
+        navigate('../user', { replace: true });
+      }
     } catch (err) {
       setLoading(false);
       setError('User not found. Please try again.');
