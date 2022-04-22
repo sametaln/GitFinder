@@ -5,6 +5,13 @@ import { Repo } from '../pages/UserPage/UserPage';
 export const fetchRepos = async <T>(username: string): Promise<T> => {
   const res = await axios.get(`https://api.github.com/users/${username}/repos`);
   const data = await res.data;
+  data.sort(
+    (a: { stargazers_count: number }, b: { stargazers_count: number }) => {
+      if (a.stargazers_count > b.stargazers_count) return -1;
+      if (a.stargazers_count < b.stargazers_count) return 1;
+      return 0;
+    }
+  );
   setWithTime(username + '/repo', data, 1000 * 60 * 5);
   return data;
 };

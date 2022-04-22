@@ -29,10 +29,16 @@ const UserPage = ({ user }: { user: User }) => {
   useEffect(() => {
     try {
       setLoading(true);
-      fetchRepos<Array<Repo>>(userObject.login).then((data: Repo[]) => {
-        setRepos(data);
+      if (!getWithTime(userObject.login + '/repo')) {
+        fetchRepos<Array<Repo>>(userObject.login).then((data: Repo[]) => {
+          setRepos(data);
+          setLoading(false);
+        });
+      } else {
+        setRepos(getWithTime(userObject.login + '/repo'));
+        console.log(getWithTime(userObject.login + '/repo'));
         setLoading(false);
-      });
+      }
     } catch (err) {
       setError('Something wrong happened. Please try again.');
       navigate('/');
@@ -61,14 +67,6 @@ const UserPage = ({ user }: { user: User }) => {
     setCount(count - 2);
   };
 
-  repos.sort(
-    (a: { stargazers_count: number }, b: { stargazers_count: number }) => {
-      if (a.stargazers_count > b.stargazers_count) return -1;
-      if (a.stargazers_count < b.stargazers_count) return 1;
-      return 0;
-    }
-  );
-
   return (
     <div className="user-wrapper">
       {warning && count === repos.length + 1 ? (
@@ -85,7 +83,12 @@ const UserPage = ({ user }: { user: User }) => {
         <UserInfo userObject={userObject} repos={repos} />
         <div className="repo-container">
           <h1 className="repo-container-title">Repositories</h1>
-          {loading ? <RepoLoad /> : <Repos repos={repos.slice(0, count)} />}
+          {!repos.length ? <h2>There is no repository to show</h2> : null}
+          {loading && repos.length ? (
+            <RepoLoad />
+          ) : (
+            <Repos repos={repos.slice(0, count)} />
+          )}
           <div className="repo-container-buttons">
             {more ? (
               <button className="user-load more" onClick={handleClickMore}>
