@@ -83,7 +83,9 @@ const UserPage = ({ user }: { user: User }) => {
         <UserInfo userObject={userObject} repos={repos} />
         <div className="repo-container">
           <h1 className="repo-container-title">Repositories</h1>
-          {!repos.length ? <h2>There is no repository to show</h2> : null}
+          {!repos.length && !loading ? (
+            <h2>There is no repository to show</h2>
+          ) : null}
           {loading && repos.length ? (
             <RepoLoad />
           ) : (
