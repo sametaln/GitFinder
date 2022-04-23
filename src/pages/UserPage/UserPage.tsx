@@ -92,15 +92,16 @@ const UserPage = ({ user }: { user: User }) => {
             <Repos repos={repos.slice(0, count)} />
           )}
           <div className="repo-container-buttons">
-            {more ? (
+            {more && repos.length ? (
               <button className="user-load more" onClick={handleClickMore}>
                 Load More
               </button>
-            ) : (
+            ) : null}
+            {!more && repos.length ? (
               <button className="user-load less" onClick={handleClickLess}>
                 Show Less
               </button>
-            )}
+            ) : null}
             <Link className="user-load" to="/">
               Go Back
             </Link>
