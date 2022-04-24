@@ -22,3 +22,7 @@
    [Sass]: <https://sass-lang.com/>
    [Axios]: <https://axios-http.com/>
    [React Router]: <https://reactrouter.com/>
+
+## Usage
+
+![](usage.gif)
