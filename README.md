@@ -25,4 +25,5 @@
 
 ## Usage
 
-![](usage.gif)
+<img src="/public/assets/usage.gif" width="85%" height="75%"/>
+
