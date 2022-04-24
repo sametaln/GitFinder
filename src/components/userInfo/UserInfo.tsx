@@ -18,7 +18,11 @@ const UserInfo = ({
       >
         <p className="user-info-link-text">
           View on Github{' '}
-          <img className="user-info-link-icon" src="assets/icon.svg" />
+          <img
+            className="user-info-link-icon"
+            src="assets/icon.svg"
+            alt="Redirect Icon"
+          />
         </p>
       </a>
       <div className="user-info-img">

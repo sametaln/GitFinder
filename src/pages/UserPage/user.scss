@@ -22,40 +22,18 @@
   text-align: center;
   position: relative;
 
-  &-warning {
-    z-index: 2;
-    color: white;
-    position: absolute;
-    bottom: 3%;
-    right: 2%;
-    background-color: #b68d1d;
-    width: 20%;
-    height: 10%;
-    border-radius: 4px;
-    border: 1px solid #a09f5a;
-    padding: 0 1rem;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 1s linear 1s;
-    &:hover {
-      opacity: 0;
-    }
-  }
-
   &-info {
     background-color: #0a0a0a;
     border: 1px solid #292929;
     width: 80%;
-    height: 35%;
+    min-height: 40%;
     border-radius: 4px;
-    position: absolute;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    top: 15%;
+    top: -17%;
 
     &-link {
       position: absolute;
@@ -105,8 +83,8 @@
     }
 
     &-avatar {
-      width: 5.5rem;
-      height: 5.5rem;
+      width: 6rem;
+      height: 6rem;
       object-fit: cover;
       border-radius: 50%;
       vertical-align: middle;
@@ -131,7 +109,7 @@
     }
 
     &-name {
-      margin-top: 3.2rem;
+      margin-top: 2rem;
       font-size: 1.2rem;
     }
 
@@ -167,6 +145,28 @@
     &:hover {
       background-color: #fff;
       color: black;
+    }
+  }
+
+  &-warning {
+    z-index: 2;
+    color: white;
+    position: absolute;
+    bottom: 3%;
+    right: 2%;
+    background-color: #b68d1d;
+    width: 20%;
+    height: 10%;
+    border-radius: 4px;
+    border: 1px solid #a09f5a;
+    padding: 0 1rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1s linear 1s;
+    &:hover {
+      opacity: 0;
     }
   }
 }
@@ -256,7 +256,7 @@
 
         &-icon {
           position: absolute;
-          top: 20%;
+          top: 15%;
           right: -0.5rem;
         }
       }
@@ -266,8 +266,8 @@
       }
 
       &-avatar {
-        width: 4rem;
-        height: 4rem;
+        width: 4.2rem;
+        height: 4.2rem;
       }
 
       &-container {
@@ -281,9 +281,14 @@
         margin-bottom: 1.5rem;
         height: 15%;
       }
-    }
-    &-login {
-      margin-top: 1rem;
+
+      &-name {
+        margin-top: 2rem;
+      }
+
+      &-login {
+        margin-top: 1rem;
+      }
     }
 
     &-load {

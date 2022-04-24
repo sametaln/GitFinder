@@ -43,18 +43,18 @@ const UserPage = ({ user }: { user: User }) => {
       setError('Something wrong happened. Please try again.');
       navigate('/');
     }
-  }, []);
+  }, [userObject.login, navigate]);
 
   useEffect(() => {
     if (count <= 2) {
       setCount(2);
       setMore(true);
     }
-    if (count >= repos.length && repos.length != 0) {
+    if (count >= repos.length && repos.length !== 0) {
       setCount(repos.length);
       setMore(false);
     }
-  }, [count]);
+  }, [count, repos.length]);
 
   const handleClickMore = () => {
     if (count >= repos.length) {
