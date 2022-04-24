@@ -131,7 +131,7 @@
     }
 
     &-name {
-      margin-top: 1.4rem;
+      margin-top: 3.2rem;
       font-size: 1.2rem;
     }
 
@@ -211,7 +211,7 @@
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   .user {
     width: 100%;
 
@@ -223,6 +223,11 @@
       &-avatar {
         width: 4.7rem;
         height: 4.7rem;
+      }
+
+      &-name {
+        margin-top: 1.7rem;
+        font-size: 1.2rem;
       }
     }
 
@@ -283,6 +288,7 @@
 
     &-load {
       font-size: 0.75rem;
+      width: 45%;
     }
 
     .user-warning {
