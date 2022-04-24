@@ -1,6 +1,3 @@
-
-# GITHUB PROFILE EXPLORER
-
 <img src='/public/assets/banner.svg' alt='banner' />
 
 <h1 align='center'>GitFinder</h1>
