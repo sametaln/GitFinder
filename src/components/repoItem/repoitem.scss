@@ -67,9 +67,14 @@
 
   &-description {
     font-size: 0.8rem;
+    max-width: 350px;
     color: #acacac;
-    text-overflow: ellipsis;
     overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 
   &-stats {
@@ -95,5 +100,9 @@
     width: 80%;
     height: 25%;
     margin: 1rem 0;
+
+    &-description {
+      max-width: 200px;
+    }
   }
 }

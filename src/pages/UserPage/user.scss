@@ -147,28 +147,6 @@
       color: black;
     }
   }
-
-  &-warning {
-    z-index: 2;
-    color: white;
-    position: absolute;
-    bottom: 3%;
-    right: 2%;
-    background-color: #b68d1d;
-    width: 20%;
-    height: 10%;
-    border-radius: 4px;
-    border: 1px solid #a09f5a;
-    padding: 0 1rem;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 1s linear 1s;
-    &:hover {
-      opacity: 0;
-    }
-  }
 }
 
 .more {
@@ -230,15 +208,6 @@
         font-size: 1.2rem;
       }
     }
-
-    &-warning {
-      bottom: 5%;
-      text-align: left;
-      font-size: 0.7rem;
-      &-text {
-        text-align: left;
-      }
-    }
   }
 }
 
@@ -294,15 +263,6 @@
     &-load {
       font-size: 0.75rem;
       width: 45%;
-    }
-
-    .user-warning {
-      position: absolute;
-      background-color: #fff;
-      width: 45%;
-      right: 28%;
-      bottom: 13%;
-      font-size: 0.55rem;
     }
   }
 
