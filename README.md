@@ -29,4 +29,21 @@
    <img src="/public/assets/usage.gif" width="85%" height="75%" />
 </div>
 
+## Develop Locally
+
+**1) Clone the repository**
+```bash
+$ git clone https://github.com/sametaln/GitFinder.git
+```
+**2) Install reqiured packages**
+```bash
+$ npm install
+```
+
+**3) Start development server**
+```bash
+$ npm start
+```
+
+### That's it. You can enjoy developing
 
