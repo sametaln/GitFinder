@@ -35,7 +35,6 @@ const UserPage = ({ user }: { user: User }) => {
         });
       } else {
         setRepos(getWithTime(userObject.login + '/repo'));
-        console.log(getWithTime(userObject.login + '/repo'));
         setLoading(false);
       }
     } catch (err) {
