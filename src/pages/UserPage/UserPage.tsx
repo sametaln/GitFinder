@@ -21,7 +21,6 @@ const UserPage = ({ user }: { user: User }) => {
   const userObject = user;
   const [repos, setRepos] = useState<Repo[]>([]);
   const [count, setCount] = useState(2);
-  const [warning, setWarning] = useState('');
   const [more, setMore] = useState(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -57,9 +56,6 @@ const UserPage = ({ user }: { user: User }) => {
   }, [count, repos.length]);
 
   const handleClickMore = () => {
-    if (count >= repos.length) {
-      setWarning('No more repos to show.');
-    }
     setCount(count + 2);
   };
 
@@ -69,11 +65,6 @@ const UserPage = ({ user }: { user: User }) => {
 
   return (
     <div className="user-wrapper">
-      {warning && count === repos.length + 1 ? (
-        <div className="user-warning" onTransitionEnd={() => setWarning('')}>
-          <p className="user-warning-text">{warning}</p>
-        </div>
-      ) : null}
       {error ? (
         <div className="load-error">
           <p>{error}</p>
