@@ -25,5 +25,8 @@
 
 ## Usage
 
-<img src="/public/assets/usage.gif" width="85%" height="75%"/>
+<div align='center'>
+   <img src="/public/assets/usage.gif" width="85%" height="75%" />
+</div>
+
 
