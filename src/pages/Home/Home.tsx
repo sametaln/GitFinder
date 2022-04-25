@@ -16,23 +16,29 @@ const Home = ({
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  // FETCHING DATA AFTER FORM SUBMIT
+
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     try {
+      // IF USER IS NOT STORED IN LOCAL STORAGE
       if (!getWithTime(username)) {
         const data = await fetchUserData(username);
         setUser(data);
         setLoading(false);
         setError('');
         navigate('../user', { replace: true });
-      } else {
+      }
+      // IF USER IS STORED IN LOCAL STORAGE
+      else {
         setUser(getWithTime(username));
         setLoading(false);
         setError('');
         navigate('../user', { replace: true });
       }
     } catch (err) {
+      // IF THERE IS NO USER
       setLoading(false);
       setError('User not found. Please try again.');
     }

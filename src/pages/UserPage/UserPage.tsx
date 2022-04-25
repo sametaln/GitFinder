@@ -44,6 +44,8 @@ const UserPage = ({ user }: { user: User }) => {
     }
   }, [userObject.login, navigate]);
 
+  // DECIDE WHICH BUTTON TO SHOW
+
   useEffect(() => {
     if (count <= 2) {
       setCount(2);

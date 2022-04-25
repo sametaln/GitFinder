@@ -2,6 +2,8 @@ import axios from 'axios';
 import { User } from '../App';
 import { Repo } from '../pages/UserPage/UserPage';
 
+// UTILITY FUNCTIONS FOR DATA FETCHING
+
 export const fetchRepos = async <T>(username: string): Promise<T> => {
   const res = await axios.get(`https://api.github.com/users/${username}/repos`);
   const data = await res.data;
@@ -22,6 +24,8 @@ export const fetchUserData = async <T>(username: string): Promise<T> => {
   setWithTime(username, data, 1000 * 60 * 5);
   return data;
 };
+
+// INTERACTING WITH LOCAL STORAGE TO CACHE DATA
 
 const setWithTime = (key: string, data: User | Repo, timeout: number) => {
   const now = new Date();
