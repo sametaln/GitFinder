@@ -89,7 +89,7 @@ const UserPage = ({ user }: { user: User }) => {
                 Load More
               </button>
             ) : null}
-            {!more && repos.length ? (
+            {!more && repos.length && repos.length !== 1 ? (
               <button className="user-load less" onClick={handleClickLess}>
                 Show Less
               </button>
