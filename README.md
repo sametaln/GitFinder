@@ -35,7 +35,7 @@
 ```bash
 $ git clone https://github.com/sametaln/GitFinder.git
 ```
-**2) Install reqiured packages**
+**2) Install required packages**
 ```bash
 $ npm install
 ```
