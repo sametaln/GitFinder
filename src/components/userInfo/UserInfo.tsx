@@ -8,6 +8,11 @@ const UserInfo = ({
   userObject: User;
   repos: Repo[];
 }) => {
+  // Could have done this rather than hard coding
+  // const numberToK = (num: number) => {
+  //   return num > 999 ? `${(num / 1000).toFixed(1)}k` : num;
+  // };
+
   return (
     <div className="user-info">
       <a
